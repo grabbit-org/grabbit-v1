@@ -1,0 +1,104 @@
+#admin {
+  .position(absolute, 0, 0, 0, 0);
+  background: @color-raw;
+
+  .back-desktop {
+    .font-s2;
+    .title-caps;
+    .type-black;
+    .position(absolute, 1.5rem, auto, auto, 1.5rem);
+  }
+
+  .wrapper-admin {
+    text-align: center;
+    margin: 5rem 5%;
+    @media screen and (min-width: 30em) { margin: 7rem 15%; }
+  }
+
+  .title-admin {
+    .font-m3;
+    .title-caps;
+    .type-black;
+    margin-bottom: 2rem;
+  }
+
+  label {
+    .font-s3;
+    .type-bold;
+    display: block;
+    margin-bottom: .75rem;
+    padding-left: 1.25rem;
+  }
+
+  form {
+    .font-s3;
+    background: @color-empty;
+    padding: .75rem 0 0;
+    text-align: left;
+  }
+
+  textarea {
+    border-bottom: 1px solid @color-raw;
+    border-top: 1px solid @color-raw;
+    resize: none;
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .input-wrap{
+    position: relative;
+    height: 44px;
+
+    label {
+      float: left;
+      padding: 1rem;
+    }
+
+    input[type="checkbox"] {
+      padding: 1rem;
+      float: left;
+      display: block;
+      margin: 1.3rem .5rem;
+    }
+  }
+
+  input[name="location"]{
+    width: 100%;
+  }
+
+  .wrapper-camera {
+    .position(relative, auto, 0, 0, 0, 100%);
+    text-align: center;
+
+    .btn-camera {
+      margin-bottom: .5rem;
+      width: 100%;
+      height: 46px;
+      border-radius: 0;
+      color: #fff;
+      background-color: #340451;
+      border: none;
+    }
+    .subtext-camera {
+      .font-s2;
+      color: @color-white;
+      margin-bottom: .75rem;
+      line-height: 42px;
+    }
+    .icon-camera {
+      right: 10%;
+      border-radius: 0px;
+      height: 100%;
+      font-size: 21px;
+      line-height: 42px;
+    }
+  }
+}
+
+.hdpi.pac-logo:after, .pac-logo:after {
+    background-image: none !important;
+    height: 0px;
+}

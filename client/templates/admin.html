@@ -1,0 +1,60 @@
+<template name="admin">
+  <div id="admin">
+    <a href="/" class="back-desktop"><span class="icon-arrow-left-alt"></span> Back</a>
+    <div class="wrapper-admin">
+      {{#if isAdmin}}
+        <h1 class="title-admin">Admin</h1>
+
+        <form>
+          <label>Add a Grabbit deal:</label>
+          <input type="text" name="name" value="" placeholder="Deal title">
+          <input type="text" name="excerpt" value="" placeholder="Short description">
+          <input type="text" name="location" value="" placeholder="Address" id="autocomplete">
+
+          <div class="input-wrap">
+            <label for="highlighted">Front page?</label>
+            <input type="checkbox" name="highlighted" value="">
+          </div>
+          
+          {{#unless attachedImage}}
+            <div class="wrapper-camera">
+              <a class="js-attach-image btn-camera">
+                <span class="subtext-camera">Take a pic</span>
+                <span class="icon-camera"></span>
+              </a>
+            </div>
+          {{/unless}}
+
+          <button type="submit" class="btn-primary">Save</button>
+
+          <button id="logout" class="btn-primary">Log out</button>
+        </form>
+      {{else}}
+        <h1 class="title-admin">Forbidden</h1>
+        
+        {{#unless currentUser}}
+          <a class="login twitter">Log in with Twitter</a>
+          <br>
+          <a class="login facebook">Log in with Facebook</a>
+        {{/unless}}
+      {{/if}}
+    </div>
+
+    <div class="notifications">
+      {{#each notifications}}
+        <div class="notification">
+          <a class="btn-primary js-notification-action">{{action}}</a>
+          <div class="title-notification">{{title}}</div>
+        </div>
+      {{/each}}
+    </div>
+    <!-- <div>
+      {{#each latestGrabbs}}
+        <div>
+          {{this.title}}<br>
+          {{this.excerpt}}
+        </div>
+      {{/each}}
+    </div> -->
+  </div>
+</template>

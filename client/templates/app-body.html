@@ -1,0 +1,145 @@
+<template name="appBody">
+  <div class="wrapper-welcome">
+    <div class="title-welcome">
+      <img src="/img/app/logo.png" alt="Grabbit">
+    </div>
+    <div class="description-welcome">
+      <p>Improving the shopping experience together by saving you money with our mobile app!</p>
+    </div>
+    
+    <div class="description-welcome">
+      <p>Inaccurate data, lack of real-time information and non-valid coupons are common problems in the shopping community today.</p>
+    </div>
+
+    <div class="description-welcome">
+      <p>We offer a real-time curated list of deals! Snap a pic when you take advantage of one of our deals and share with your friends. If the deal is not valid let us know and we will take it off the list.</p>
+    </div>
+    
+    <hr>
+
+    <div class="description-welcome">
+      <p>Enter your email below to get notified when the app is ready!</p>
+      <form class="form-inline" role="form">                     
+          <div class="form-group">
+              <label class="sr-only" for="subscribe-email">Email address</label>
+              <input type="text" name="email" placeholder="Enter your email..." class="subscribe-email form-control" id="subscribe-email">
+          </div>
+          <button type="submit" class="btn">Subscribe</button>
+      </form>
+
+      <div class="timer" id="timer">
+          <div class="days-wrapper">
+              <span class="days">{{days}}</span> <br>days
+          </div>
+          <div class="hours-wrapper">
+              <span class="hours">{{hours}}</span> <br>hours
+          </div>
+          <div class="minutes-wrapper">
+              <span class="minutes">{{minutes}}</span> <br>minutes
+          </div>
+          <div class="seconds-wrapper">
+              <span class="seconds">{{seconds}}</span> <br>seconds
+          </div>
+      </div>
+
+      <div class="social">
+        <a href="https://www.facebook.com/grabbitdeal" data-toggle="tooltip" data-placement="top" title="Facebook"><i class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/GrabbitDeal" data-toggle="tooltip" data-placement="top" title="Twitter"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.pinterest.com/grabbitd/" data-toggle="tooltip" data-placement="top" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="container" class="{{menuOpen}} {{overlayOpen}}">
+    <section id="menu" class="overthrow">
+      <a href="{{pathFor 'home'}}" class="{{activePage 'home'}}">
+        <span class="wrapper-menu-item">
+          <span class="icon-home"></span>
+          <span class="title-menu">Home</span>
+        </span>
+      </a>
+      <a href="{{pathFor 'feed'}}" class="{{activePage 'feed'}}">
+        <span class="wrapper-menu-item">
+          <span class="icon-rss"></span>
+          <span class="title-menu">What's<br>Grabbing</span>
+        </span>
+      </a>
+      <a href="{{pathFor 'recipes'}}" class="{{activePage 'recipes' 'recipe'}}">
+        <span class="wrapper-menu-item">
+          <span class="icon-category"></span>
+          <span class="title-menu">Grabbs</span>
+        </span>
+      </a>
+      <a href="{{pathFor 'bookmarks'}}" class="{{activePage 'bookmarks'}}">
+        <span class="wrapper-menu-item">
+          <span class="icon-bookmark-hollow"></span>
+          <span class="title-menu">Bookmarks</span>
+        </span>
+      </a>
+      <a href="{{pathFor 'about'}}" class="{{activePage 'about'}}">
+        <span class="wrapper-menu-item">
+          <span class="icon-question"></span>
+          <span class="title-menu">About</span>
+        </span>
+      </a>
+    </section>
+
+      <div class="notifications">
+        {{#unless connected}}
+          <div class="notification">
+            <span class="icon-sync"></span>
+            <div class="title-notification">Trying to connect</div>
+          </div>
+        {{/unless}}
+        {{#each notifications}}
+          <div class="notification">
+            <a class="btn-primary js-notification-action">{{action}}</a>
+            <div class="title-notification">{{title}}</div>
+          </div>
+        {{/each}}
+      </div>
+
+    {{> overlay}}
+
+    <div class="content-overlay"></div>
+
+    <div id="content-container">
+      {{> yield}}
+    </div>
+
+  </div>
+</template>
+
+<template name="thankYouEmail">
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Thank you for joining the Grabbit network!</title>
+    </head>
+        <body bgcolor="#c65d9f" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; width: 100% !important; height: 100%; margin: 0; padding: 0;">
+
+    <!-- body -->
+        <table class="body-wrap" bgcolor="#c65d9f" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; width: 100%; margin: 0; padding: 20px;"><tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;"><td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;"></td>
+        <td class="container" bgcolor="#FFFFFF" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; display: block !important; max-width: 600px !important; clear: both !important; margin: 0 auto; padding: 20px; border: 1px solid #f0f0f0;">
+
+            <!-- content -->
+                <div class="content" style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; max-width: 600px; display: block; margin: 0 auto; padding: 0;">
+                <table style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; width: 100%; margin: 0; padding: 0;"><tr style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;"><td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;">
+                <h2 style="font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 36px; line-height: 1.2; color: #5e1c85; font-weight: 200; margin: 40px 0 10px; padding: 0; text-align: center; ">Thank you for joining the Grabbit mailing list!</h2>
+
+                <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">We look forward to sharing our progress with you and will periodically send updates to your email address.</p>
+                <br/>
+                <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">In the meantime feel free to check out our <a href="https://www.facebook.com/grabbitdeal" data-toggle="tooltip" data-placement="top" title="Facebook">Facebook page</a> for awesome deals going on around the city!</p>
+                </td>
+                </tr></table></div>
+            <!-- /content -->
+
+        </td>
+        <td style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6; margin: 0; padding: 0;"></td>
+        </tr></table>
+    <!-- /body -->
+
+
+    </body>
+</template>
